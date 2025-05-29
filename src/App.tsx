@@ -1,7 +1,7 @@
 //import { useEffect } from "react";
 import React from "react";
 import "./App.css";
-import GameCard from "./components/GameCard";
+import TestComponent from "./_test/TestComponent";
 
 function App() {
   // useEffect(() => {
@@ -14,7 +14,9 @@ function App() {
   //     .catch((err) => console.error("Fetch error:", err));
   // }, []);
   return (
-    <div></div>
+    <div>
+      <TestComponent />
+    </div>
     // <div className="App">
     //   <h1>NHL Scoreboard</h1>
     //   <TodayGames />

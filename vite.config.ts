@@ -9,7 +9,9 @@ export default defineConfig({
       '/api': {
         target: 'https://api-web.nhle.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/v1'), // rewrites /api/scoreboard/now → /v1/scoreboard/now
+        rewrite: (path) => path.replace(/^\/api/, '/v1'), 
+        secure: false,
+        followRedirects: true,
       },
     },
   },

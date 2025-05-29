@@ -1,8 +1,8 @@
 export interface GoalieStats {
-  wins?: (StatsEntity)[] | null;
-  shutouts?: (StatsEntity)[] | null;
-  savePctg?: (StatsEntity)[] | null;
-  goalsAgainstAverage?: (StatsEntity)[] | null;
+  wins?: StatsEntity[];
+  shutouts?: StatsEntity[] | null;
+  savePctg?: StatsEntity[] | null;
+  goalsAgainstAverage?: StatsEntity[] | null;
 }
 export interface StatsEntity {
   id: number;
