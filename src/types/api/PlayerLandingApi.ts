@@ -37,9 +37,6 @@ export interface PlayerLanding {
   awards?: (AwardsEntity)[] | null;
   currentTeamRoster?: (CurrentTeamRosterEntity)[] | null;
 }
-export interface StringDefault {
-  default: string | null;
-}
 export interface BadgesEntity {
   logoUrl: StringDefault;
   title: StringDefault;
@@ -166,3 +163,6 @@ export interface CurrentTeamRosterEntity {
   playerSlug: string;
 }
 
+export interface StringDefault {
+  default: string | null;
+}

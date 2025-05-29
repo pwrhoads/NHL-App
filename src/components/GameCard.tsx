@@ -1,6 +1,6 @@
 import React from "react";
 import TeamLogo from "./TeamLogo";
-import type { Game } from "../types/Game";
+import type { Game } from "../types/view/Game";
 import Score from "./Score";
 
 interface GameCardProps {
