@@ -1,4 +1,5 @@
 import type { GoalieStats } from "../types/api/GoalieStats";
+import { CheckSearchParams } from "./helper/CheckSearchParams";
 
 const baseUrl: string = "/api/goalie-stats-leaders/";
 const error: string = "Failed to fetch goalie stats";
@@ -43,18 +44,4 @@ export async function FetchGoalieStatLeadersBySeasonAndGameType({
   return res.json();
 }
 
-function CheckSearchParams(
-  categories: string[] | undefined,
-  limit: number | undefined
-) {
-  const params = new URLSearchParams();
-  if (categories && categories.length > 0) {
-    params.append("categories", categories.join(","));
-  }
 
-  if (limit != undefined) {
-    params.append("limit", limit.toString());
-  }
-
-  return params;
-}

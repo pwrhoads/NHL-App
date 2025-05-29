@@ -1,4 +1,5 @@
 import type { SkaterStats } from "../types/api/SkaterStats";
+import { CheckSearchParams } from "./helper/CheckSearchParams";
 
 const baseUrl: string = "/api/skater-stats-leaders/";
 const error: string = "Failed to fetch skater stats";
@@ -41,20 +42,4 @@ export async function FetchSkaterStatLeadersBySeasonAndGameType({
   );
   if (!res.ok) throw new Error(`${error}`);
   return res.json();
-}
-
-function CheckSearchParams(
-  categories: string[] | undefined,
-  limit: number | undefined
-) {
-  const params = new URLSearchParams();
-  if (categories && categories.length > 0) {
-    params.append("categories", categories.join(","));
-  }
-
-  if (limit != undefined) {
-    params.append("limit", limit.toString());
-  }
-
-  return params;
 }
