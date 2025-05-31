@@ -4,7 +4,7 @@ import { CheckSearchParams } from "./helper/CheckSearchParams";
 const baseUrl: string = "/api/goalie-stats-leaders/";
 const error: string = "Failed to fetch goalie stats";
 
-interface GoalieStatsProps {
+export interface GoalieStatsProps {
   season?: number;
   gameType?: 2 | 3;
   categories?: string[];
@@ -14,7 +14,7 @@ interface GoalieStatsProps {
 export async function FetchGoalieStatLeadersNow({
   categories,
   limit,
-}: GoalieStatsProps = {}): Promise<GoalieStats[]> {
+}: GoalieStatsProps = {}): Promise<GoalieStats> {
   const params = CheckSearchParams(categories, limit);
 
   const res = await fetch(
@@ -29,7 +29,7 @@ export async function FetchGoalieStatLeadersBySeasonAndGameType({
   gameType,
   categories,
   limit,
-}: GoalieStatsProps): Promise<GoalieStats[]> {
+}: GoalieStatsProps): Promise<GoalieStats> {
   const params = CheckSearchParams(categories, limit);
 
   const res = await fetch(

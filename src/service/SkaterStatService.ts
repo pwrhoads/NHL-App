@@ -14,7 +14,7 @@ interface SkaterStatsProps {
 export async function FetchSkaterStatLeadersNow({
   categories,
   limit,
-}: SkaterStatsProps): Promise<SkaterStats[]> {
+}: SkaterStatsProps): Promise<SkaterStats> {
   const params = CheckSearchParams(categories, limit);
 
   const res = await fetch(

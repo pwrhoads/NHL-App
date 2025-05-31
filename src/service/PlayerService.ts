@@ -12,7 +12,7 @@ interface PlayerGameLogParams {
 
 export async function fetchPlayerGameLogNow({
   playerID,
-}: PlayerGameLogParams): Promise<PlayerGameLog[]> {
+}: PlayerGameLogParams): Promise<PlayerGameLog> {
   const res = await fetch(
     `${baseUrl}` + "player/" + `${playerID}` + "/game-log/now"
   );
@@ -24,7 +24,7 @@ export async function fetchPlayerGameLogBySeasonAndType({
   playerID,
   season,
   gameType,
-}: PlayerGameLogParams): Promise<PlayerGameLog[]> {
+}: PlayerGameLogParams): Promise<PlayerGameLog> {
   const res = await fetch(
     `${baseUrl}` +
       "player/" +
@@ -40,7 +40,7 @@ export async function fetchPlayerGameLogBySeasonAndType({
 
 export async function fetchPlayerLanding({
   playerID,
-}: PlayerGameLogParams): Promise<PlayerLanding[]> {
+}: PlayerGameLogParams): Promise<PlayerLanding> {
   const res = await fetch(`${baseUrl}` + "/" + `${playerID}` + "/landing");
   if (!res.ok) throw new Error(`${error}`);
   return res.json();
