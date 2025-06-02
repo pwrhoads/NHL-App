@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { GoalieStats } from "../types/api/GoalieStats";
+import type { GoalieStats } from "../types/api/GoalieStatsApi";
 import { FetchGoalieStatLeadersBySeasonAndGameType } from "../service/GoalieStatService";
 
 const TestComponent: React.FC = () => {

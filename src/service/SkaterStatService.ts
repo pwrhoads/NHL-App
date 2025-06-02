@@ -1,4 +1,4 @@
-import type { SkaterStats } from "../types/api/SkaterStats";
+import type { SkaterStats } from "../types/api/SkaterStatsApi";
 import { CheckSearchParams } from "./helper/CheckSearchParams";
 
 const baseUrl: string = "/api/skater-stats-leaders/";

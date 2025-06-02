@@ -1,13 +1,15 @@
 import type { PlayerGameLog } from "../types/api/PlayerGameLogApi";
 import type { PlayerLanding } from "../types/api/PlayerLandingApi";
+import type { PlayerSpotlight } from "../types/api/PlayerSpotlightApi";
 
 const baseUrl: string = "/api/player/";
+const baseSpotlightUrl: string = "/api/player-spotlight"
 const error: string = "Failed to fetch player game log";
 
 interface PlayerGameLogParams {
   playerID: string;
   season: number;
-  gameType: 1 | 2 | 3;
+  gameType: 2 | 3;
 }
 
 export async function fetchPlayerGameLogNow({
@@ -41,7 +43,13 @@ export async function fetchPlayerGameLogBySeasonAndType({
 export async function fetchPlayerLanding({
   playerID,
 }: PlayerGameLogParams): Promise<PlayerLanding> {
-  const res = await fetch(`${baseUrl}` + "/" + `${playerID}` + "/landing");
+  const res = await fetch(`${baseUrl}` + `${playerID}` + "/landing");
   if (!res.ok) throw new Error(`${error}`);
   return res.json();
+}
+
+export async function fetchPlayerSpotlight() : Promise<PlayerSpotlight> {
+  const res = await fetch(`${baseSpotlightUrl}`);
+  if (!res.ok) throw new Error(`${error}`);
+  return res.json();  
 }

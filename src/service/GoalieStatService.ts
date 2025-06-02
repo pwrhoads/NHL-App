@@ -1,4 +1,4 @@
-import type { GoalieStats } from "../types/api/GoalieStats";
+import type { GoalieStats } from "../types/api/GoalieStatsApi";
 import { CheckSearchParams } from "./helper/CheckSearchParams";
 
 const baseUrl: string = "/api/goalie-stats-leaders/";

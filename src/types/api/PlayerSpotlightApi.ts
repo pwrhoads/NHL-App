@@ -11,5 +11,5 @@ export interface PlayerSpotlight {
   sortId: number;
 }
 export interface StringDefault {
-  default: string;
+  default: string | null;
 }
