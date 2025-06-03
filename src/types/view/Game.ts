@@ -1,10 +1,10 @@
-import type { Team } from "./Team";
+import type { TeamInfo } from "./TeamStats";
 
 export interface Game {
     id: number;
-    homeTeam: Team;
-    awayTeam: Team;
-    startTimeUTC: Date;
+    homeTeam: TeamInfo;
+    awayTeam: TeamInfo;
+    startTimeUTC: string;
     homeScore?: number;
     awayScore?: number;
     homeSOG?: number;
