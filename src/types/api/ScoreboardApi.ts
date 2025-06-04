@@ -23,8 +23,8 @@ export interface GamesEntity {
   tvBroadcasts?: (TvBroadcastsEntity)[] | null;
   gameState: string;
   gameScheduleState: string;
-  awayTeam: AwayTeam;
-  homeTeam: AwayTeamOrHomeTeam;
+  awayTeam: TeamsEntity;
+  homeTeam: TeamsEntity;
   ticketsLink: string;
   ticketsLinkFr: string;
   period: number;
@@ -40,25 +40,17 @@ export interface TvBroadcastsEntity {
   network: string;
   sequenceNumber: number;
 }
-export interface AwayTeam {
+export interface TeamsEntity {
   id: number;
   name: StringDefault;
   commonName: StringDefault;
   placeNameWithPreposition: StringDefault;
   abbrev: string;
-  score: number;
+  record?: string;
+  score?: number;
   logo: string;
 }
 
-export interface AwayTeamOrHomeTeam {
-  id: number;
-  name: StringDefault;
-  commonName: StringDefault;
-  placeNameWithPreposition: StringDefault;
-  abbrev: string;
-  score: number;
-  logo: string;
-}
 export interface PeriodDescriptor {
   number: number;
   periodType: string;

@@ -1,12 +1,15 @@
 import React from "react";
 
 interface TeamLogoComponentProps {
-  isHomeTeam: boolean;
   logoUrl: string;
 }
 
-const TeamLogo = ({ isHomeTeam, logoUrl }: TeamLogoComponentProps) => {
-  return <div className="w-[50%] h-full border"></div>;
+const TeamLogo = ({ logoUrl }: TeamLogoComponentProps) => {
+  return (
+    <div className="w-[50%] h-full content-center">
+      <img src={logoUrl} />
+    </div>
+  );
 };
 
 export default TeamLogo;

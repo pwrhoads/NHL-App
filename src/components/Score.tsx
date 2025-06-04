@@ -1,19 +1,11 @@
 import React from "react";
 
 interface ScoreComponentProps {
-  isFuture: boolean;
-  isHomeTeam?: boolean;
-  homeScore?: number;
-  awayScore?: number;
+  score: number | undefined;
 }
 
-const Score = ({
-  isFuture,
-  isHomeTeam,
-  homeScore,
-  awayScore,
-}: ScoreComponentProps) => {
-  return <div className="w-[50%] h-full border"></div>;
+const Score = ({ score }: ScoreComponentProps) => {
+  return <div className="w-[50%] h-full border content-center">{score}</div>;
 };
 
 export default Score;

@@ -1,12 +1,18 @@
 //import { useEffect } from "react";
 import React from "react";
 import "./App.css";
-import TestComponent from "./_test/TestComponent";
+import GameCard from "./components/GameCard";
+import { getGamesToday } from "./utils/GetGames";
+
+const games = await getGamesToday();
 
 function App() {
   return (
     <div>
-      <TestComponent />
+      {games.map((game) => (
+        <GameCard key={game.id} game={game} />
+      ))}
+      ;
     </div>
   );
 }

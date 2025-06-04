@@ -2,6 +2,7 @@
 export interface TeamInfo {
     id: string;
     teamName: string;
+    teamPlace: string;
     teamAbbrev: string;
     logoUrl: string;
 }

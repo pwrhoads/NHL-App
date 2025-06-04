@@ -10,4 +10,5 @@ export interface Game {
     homeSOG?: number;
     awaySOG?: number;
     gameType: 2|3;  //2 is regular season, 3 is postseason
+    gameState: string;
 }
