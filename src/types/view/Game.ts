@@ -1,7 +1,9 @@
+import type { Clock } from "./ClockType";
 import type { TeamInfo } from "./TeamStats";
+import {GameState} from "./GameState"
 
 export interface Game {
-    id: number;
+    id: string;
     homeTeam: TeamInfo;
     awayTeam: TeamInfo;
     startTimeUTC: string;
@@ -10,5 +12,6 @@ export interface Game {
     homeSOG?: number;
     awaySOG?: number;
     gameType: 2|3;  //2 is regular season, 3 is postseason
-    gameState: string;
+    gameState: GameState;
+    clock?: Clock;
 }

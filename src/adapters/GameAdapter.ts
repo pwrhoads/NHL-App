@@ -18,7 +18,7 @@ export async function adaptToGames (games: GamesEntity [] | null): Promise<Game[
     if (!homeTeam || !awayTeam) throw new Error("Missing team info")
 
         return {
-            id: game.id,
+            id: game.id.toString(),
             homeTeam,
             awayTeam,
             startTimeUTC: game.startTimeUTC,
