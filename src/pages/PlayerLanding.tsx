@@ -1,7 +1,7 @@
 import React from "react";
 
-function PlayerLanding() {
+const PlayerLanding = () => {
   return <div></div>;
-}
+};
 
 export default PlayerLanding;

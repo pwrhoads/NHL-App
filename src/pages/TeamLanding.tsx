@@ -1,7 +1,7 @@
 import React from "react";
 
-function TeamLanding() {
+const TeamLanding = () => {
   return <div></div>;
-}
+};
 
 export default TeamLanding;
