@@ -13,10 +13,11 @@ const ClockView = ({ game }: ClockProps) => {
   } else {
     periodDisplay = game.clock!.currentPeriod - 3 + "OT";
   }
+
+  if (game.clock?.inIntermission === true) periodDisplay += " Intermission";
   return (
-    <div className="flex grow w-full h-full justify-center items-center">
-      Period: {periodDisplay} Time Remaining: {game.clock!.inIntermission}{" "}
-      {game.clock!.timeRemaining}
+    <div className="flex grow w-full h-full justify-center items-center text-2xl font-bold text-white">
+      {periodDisplay}: {game.clock!.inIntermission} {game.clock!.timeRemaining}
     </div>
   );
 };

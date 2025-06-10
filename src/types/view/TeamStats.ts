@@ -4,7 +4,18 @@ export interface TeamInfo {
     teamName: string;
     teamPlace: string;
     teamAbbrev: string;
+    teamFullName: string;
     logoUrl: string;
+    teamStyle: TeamStyle;
+    division?: string;
+    conference?: string;
+}
+
+export interface TeamStyle {
+    primary?: string;
+    secondary?: string;
+    tertiary?: string;
+    quaternary?: string;
 }
 export interface TeamRecord {
     season: string;

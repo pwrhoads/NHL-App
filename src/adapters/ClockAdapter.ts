@@ -3,11 +3,9 @@ import type { Clock } from "../types/view/ClockType";
 
 
 export async function adaptToClock (gamecenter: Gamecenter): Promise<Clock>{
-    //if (!gamecenter) return []
-    console.log(gamecenter)
     return {
             currentPeriod: gamecenter.periodDescriptor.number,
             timeRemaining: gamecenter.clock.timeRemaining,
-            inIntermission: gamecenter.clock.inIntermission
+            inIntermission: gamecenter.clock.inIntermission 
         };
 }

@@ -4,7 +4,7 @@ const baseUrl: string = "/api/standings";
 const error: string = "Failed to fetch team standings";
 
 interface TeamStandingParams {
-  date: Date;
+  date: string;
 }
 
 export async function fetchStandingsNow(): Promise<TeamStanding> {

@@ -3,12 +3,13 @@ import React from "react";
 interface ButtonProps {
   label: string;
   onClick?: () => void | Promise<void>;
+  className?: string;
 }
 
-const Button = ({ label, onClick }: ButtonProps) => {
-  const buttonStyle = "bg-amber-400 ml-10";
+const Button = ({ label, onClick, className = "" }: ButtonProps) => {
+  const buttonStyle = "px-4 py-2 rounded-md border";
   return (
-    <button onClick={onClick} className={buttonStyle}>
+    <button onClick={onClick} className={`${buttonStyle} ${className}`}>
       {label}
     </button>
   );
