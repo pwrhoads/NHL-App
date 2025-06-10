@@ -7,8 +7,6 @@ export interface TeamInfo {
     teamFullName: string;
     logoUrl: string;
     teamStyle: TeamStyle;
-    division?: string;
-    conference?: string;
 }
 
 export interface TeamStyle {
@@ -57,6 +55,9 @@ export interface TeamSeasonStats {
         third: TeamStatLine;
         overtime: TeamStatLine;
     }
+
+    conference: string | null;
+    division: string | null;
 }
 //Stats against a given team in a given season
 export interface TeamOpposingTeamStats {

@@ -33,6 +33,8 @@ const GameLanding = () => {
       <div className="flex h-screen w-screen items-center justify-center">
         {loading ? (
           <p>Loading...</p>
+        ) : games.length === 0 ? (
+          <p className="font-bold text-xl">No Games on this Date</p>
         ) : (
           games.map((game) => (
             <GameCard
