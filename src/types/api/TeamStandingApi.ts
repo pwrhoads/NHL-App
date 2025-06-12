@@ -86,7 +86,6 @@ export interface StandingsEntity {
   winPctg: number;
   wins: number;
 }
-
 export interface StringDefault {
   default: string | null;
 }

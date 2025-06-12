@@ -22,7 +22,7 @@ const FutureGame = ({ game }: FutureProps) => {
 
   const displayDate = `${localDate} at ${localTime}`;
   return (
-    <div>
+    <div className="text-white">
       <div>
         {game.awayTeam.teamFullName} @ {game.homeTeam.teamFullName}
       </div>

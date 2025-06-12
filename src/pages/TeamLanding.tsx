@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { TeamInfo } from "../types/view/TeamStats";
 import { getAllTeamsForYear } from "../utils/GetTeam";
 //import { useNavigate } from "react-router-dom";

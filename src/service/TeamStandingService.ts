@@ -1,3 +1,4 @@
+import type { SeasonStanding } from "../types/api/SeasonStandingApi.ts";
 import type {TeamStanding} from "../types/api/TeamStandingApi.ts"
 
 const baseUrl: string = "/api/standings";
@@ -22,9 +23,8 @@ Promise<TeamStanding> {
   return res.json();
 }
 
-// MAY BE USEFUL in the future. Need a new Type if I implement this
-// export async function fetchStandingsForSeasons(): Promise<TeamStandingSeason> {
-//   const res = await fetch(`${baseUrl}` + "-season");
-//   if (!res.ok) throw new Error(`${error}`);
-//   return res.json();
-// }
+export async function fetchStandingsForSeasons(): Promise<SeasonStanding> {
+  const res = await fetch(`${baseUrl}` + "-season");
+  if (!res.ok) throw new Error(`${error}`);
+  return res.json();
+}
