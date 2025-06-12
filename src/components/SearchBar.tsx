@@ -1,44 +1,27 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { FiSearch, FiX } from "react-icons/fi";
 
 interface SearchBarProps {
   placeholder: string;
-  onSearch: (query: string) => void;
+  onEnter: (query: string) => void;
   debounceDelay?: number; //default: 300ms
 }
 
-const SearchBar = ({
-  placeholder,
-  onSearch,
-  debounceDelay = 300,
-}: SearchBarProps) => {
+const SearchBar = ({ placeholder, onEnter }: SearchBarProps) => {
   const [query, setQuery] = useState("");
-
-  const [debouncedQuery, setDebouncedQuery] = useState(query);
-
-  // Debounce the query input
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, debounceDelay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [query, debounceDelay]);
-
-  // Trigger search callback when debounced query changes
-  useEffect(() => {
-    onSearch(debouncedQuery);
-  }, [debouncedQuery, onSearch]);
 
   const handleClear = () => {
     setQuery("");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
+    setQuery(e.target.value);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onEnter(query.trim());
+    }
   };
 
   return (
@@ -60,6 +43,7 @@ const SearchBar = ({
         type="search"
         value={query}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder={placeholder}
         className="w-full pl-10 pr-10 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
       ></input>

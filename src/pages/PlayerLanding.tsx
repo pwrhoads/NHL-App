@@ -28,12 +28,12 @@ const PlayerLanding = () => {
         const data = await fetchPlayerSearch(searchTerm);
         if (!isCancelled) {
           if (data && data.length > 0) {
-            const exactMatch = data.find(
-              (player) => player.name.toLowerCase() === searchTerm.toLowerCase()
+            const filtered = data.filter((player) =>
+              player.name.toLowerCase().startsWith(searchTerm.toLowerCase())
             );
-            setPlayers(exactMatch ? [exactMatch] : data);
+            setPlayers(filtered);
           } else {
-            setPlayers(data || []);
+            setPlayers([]);
           }
         }
       } catch (err) {
@@ -53,8 +53,7 @@ const PlayerLanding = () => {
 
   return (
     <div className="p-4 w-full">
-      <SearchBar onSearch={handleSearch} placeholder="Search For Player..." />
-      {searchTerm && <p>Searching for: {searchTerm}</p>}
+      <SearchBar onEnter={handleSearch} placeholder="Search For Player..." />
       {error && <p>{error}</p>}
 
       <ul className="mt-4 space-y-2">
