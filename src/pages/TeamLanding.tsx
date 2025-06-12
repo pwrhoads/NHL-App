@@ -28,7 +28,7 @@ const TeamLanding = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        teams.map((team) => <TeamCard team={team} />)
+        teams.map((team) => <TeamCard key={team.id} team={team} />)
       )}
     </div>
   );
