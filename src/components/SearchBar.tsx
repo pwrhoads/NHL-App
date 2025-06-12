@@ -4,7 +4,6 @@ import { FiSearch, FiX } from "react-icons/fi";
 interface SearchBarProps {
   placeholder: string;
   onEnter: (query: string) => void;
-  debounceDelay?: number; //default: 300ms
 }
 
 const SearchBar = ({ placeholder, onEnter }: SearchBarProps) => {

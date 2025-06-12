@@ -2,16 +2,26 @@ import TeamLogo from "./TeamLogo";
 import type { Game } from "../types/view/Game";
 import Score from "./Score";
 import GameDetails from "./GameDetails";
+import { useNavigate } from "react-router-dom";
 
 interface GameCardProps {
   game: Game;
-  onClick?: () => void | Promise<void>;
 }
 
-const GameCard = ({ game, onClick }: GameCardProps) => {
+const GameCard = ({ game }: GameCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/games/${game.id}`, {
+      state: {
+        title: `${game.awayTeam.teamFullName} @ ${game.homeTeam.teamFullName}`,
+      },
+    });
+  };
+
   return (
     <div
-      onClick={onClick}
+      onClick={handleClick}
       className="flex flex-col w-75 h-75 rounded-lg border cursor-pointer"
       style={{
         background: `linear-gradient(to right, ${game.awayTeam.teamStyle.primary}, ${game.homeTeam.teamStyle.primary})`,

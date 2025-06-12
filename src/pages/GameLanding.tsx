@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGamesForDate, getGamesToday } from "../utils/GetGames";
 import { getClockFromGame } from "../utils/GetClock";
-import { useNavigate } from "react-router-dom";
 import GameCard from "../components/GameCard";
 import type { Game } from "../types/view/Game";
 import type { Dayjs } from "dayjs";
@@ -37,8 +36,6 @@ const GameLanding = () => {
     fetchGames();
   }, [selectedDate]);
 
-  const navigate = useNavigate();
-
   return (
     <div className="flex flex-col h-screen w-screen items-center">
       <div className="flex items-center justify-center">
@@ -53,13 +50,7 @@ const GameLanding = () => {
         ) : games.length === 0 ? (
           <p className="font-bold text-xl">No Games on this Date</p>
         ) : (
-          games.map((game) => (
-            <GameCard
-              key={game.id}
-              onClick={() => navigate("/games")}
-              game={game}
-            />
-          ))
+          games.map((game) => <GameCard key={game.id} game={game} />)
         )}
       </div>
     </div>

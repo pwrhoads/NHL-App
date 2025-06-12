@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import type { PlayerSearch } from "../types/api/PlayerSearchApi";
 import { fetchPlayerSearch } from "../service/PlayerSearchService";
+import PlayerCard from "../components/PlayerCard";
 
 const PlayerLanding = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,13 +57,11 @@ const PlayerLanding = () => {
       <SearchBar onEnter={handleSearch} placeholder="Search For Player..." />
       {error && <p>{error}</p>}
 
-      <ul className="mt-4 space-y-2">
+      <div>
         {players.map((player) => (
-          <li key={player.playerId} className="border p-2 rounded">
-            {player.name} ({player.lastTeamAbbrev})
-          </li>
+          <PlayerCard key={player.playerId} player={player} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

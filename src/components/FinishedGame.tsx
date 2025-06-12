@@ -7,7 +7,7 @@ interface FinishedProps {
 
 const FinishedGame = ({ game }: FinishedProps) => {
   console.log(game);
-  return <div>FINISHED</div>;
+  return <div className="text-white">FINISHED</div>;
 };
 
 export default FinishedGame;
