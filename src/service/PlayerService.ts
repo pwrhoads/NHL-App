@@ -40,9 +40,9 @@ export async function fetchPlayerGameLogBySeasonAndType({
   return res.json();
 }
 
-export async function fetchPlayerLanding({
-  playerID,
-}: PlayerGameLogParams): Promise<PlayerLanding> {
+export async function fetchPlayerLanding(
+  playerID
+: string): Promise<PlayerLanding> {
   const res = await fetch(`${baseUrl}` + `${playerID}` + "/landing");
   if (!res.ok) throw new Error(`${error}`);
   return res.json();

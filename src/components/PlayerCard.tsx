@@ -20,7 +20,7 @@ const PlayerCard = ({ player }: PlayerCardProps) => {
   console.log(player);
   return (
     <div
-      className="flex flex-col justify-center rounded-2xl border cursor-pointer"
+      className="flex flex-col w-75 h-125 rounded-lg border cursor-pointer"
       onClick={handleClick}
     >
       <PlayerPicture picUrl="https://assets.nhle.com/mugs/nhl/20242025/NSH/8476887.png" />

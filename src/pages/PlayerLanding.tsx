@@ -53,11 +53,10 @@ const PlayerLanding = () => {
   }, [searchTerm]);
 
   return (
-    <div className="p-4 w-full">
+    <div className="w-full flex flex-col px-4 items-center">
       <SearchBar onEnter={handleSearch} placeholder="Search For Player..." />
       {error && <p>{error}</p>}
-
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         {players.map((player) => (
           <PlayerCard key={player.playerId} player={player} />
         ))}

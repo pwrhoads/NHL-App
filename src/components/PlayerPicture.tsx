@@ -6,7 +6,7 @@ interface PlayerPictureComponentProps {
 
 const PlayerPicture = ({ picUrl }: PlayerPictureComponentProps) => {
   return (
-    <div className="w-full h-full content-center">
+    <div className="w-full content-center">
       <img src={picUrl} />
     </div>
   );
