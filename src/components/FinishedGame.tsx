@@ -1,4 +1,3 @@
-import React from "react";
 import type { Game } from "../types/view/Game";
 
 interface FinishedProps {

@@ -78,22 +78,32 @@ export interface CareerTotals {
   playoffs: RegularSeasonOrPlayoffs1;
 }
 export interface RegularSeasonOrPlayoffs1 {
-  assists: number;
-  avgToi: string;
-  faceoffWinningPctg: number;
-  gameWinningGoals: number;
-  gamesPlayed: number;
-  goals: number;
-  otGoals: number;
-  pim: number;
-  plusMinus: number;
-  points: number;
-  powerPlayGoals: number;
-  powerPlayPoints: number;
-  shootingPctg: number;
-  shorthandedGoals: number;
-  shorthandedPoints: number;
-  shots: number;
+  assists?: number;
+  avgToi?: string;
+  faceoffWinningPctg?: number;
+  gameWinningGoals?: number;
+  gamesPlayed?: number;
+  goals?: number;
+  otGoals?: number;
+  pim?: number;
+  plusMinus?: number;
+  points?: number;
+  powerPlayGoals?: number;
+  powerPlayPoints?: number;
+  shootingPctg?: number;
+  shorthandedGoals?: number;
+  shorthandedPoints?: number;
+  shots?: number;
+  gamesStarted?: number;
+  goalsAgainst?: number;
+  goalsAgainstAvg?: number;
+  losses?: number;
+  otLosses?: number;
+  savePctg?: number;
+  shotsAgainst?: number;
+  shutouts?: number;
+  wins?: number;
+  timeOnIce?: string;
 }
 export interface Last5GamesEntity {
   assists: number;

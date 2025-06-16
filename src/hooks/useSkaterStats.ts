@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { SkaterStats } from '../types/view/SkaterStats';
-import { getSkaterStats } from '../utils/loaders/SkaterStatsFetcher';
+import { getSkaterStats } from '../utils/loaders/SkaterStatsLoader';
 
 export function useSkaterStats(playerId: string) {
   const [data, setData] = useState<SkaterStats | null>(null);

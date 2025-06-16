@@ -8,6 +8,7 @@ export interface SkaterInfo {
     currentTeamAbbrev: string;
     currentSweaterNo: number;
     mugshotUrl: string;
+    position: string;
 }
 //Basic stat structure
 export interface SkaterStatLine {

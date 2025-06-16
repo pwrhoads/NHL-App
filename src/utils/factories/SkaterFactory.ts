@@ -45,6 +45,7 @@ export function createEmptySkaterStats(): SkaterStats {
         currentTeamAbbrev: '',
         currentSweaterNo: 0,
         mugshotUrl: '',
+        position: '',
         seasons: [],
         careerStats: createEmptyCareerStats()
     };

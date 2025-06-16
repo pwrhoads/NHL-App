@@ -18,6 +18,7 @@ export async function adaptToSkaterStats(
     currentTeamAbbrev: playerLanding.currentTeamAbbrev,
     currentSweaterNo: playerLanding.sweaterNumber,
     mugshotUrl: playerLanding.headshot,
+    position: playerLanding.position,
   });
 
   skaterStats.careerStats.regSeason = mapCareerStatSourceToStatLine(

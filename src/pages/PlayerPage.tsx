@@ -20,6 +20,7 @@ const PlayerPage = () => {
       <p>Team: {data.currentTeamAbbrev}</p>
       <p>Goals: {data.careerStats.combined.goals}</p>
       <p>{data.careerStats.combined.timeOnIce}</p>
+      <p>{data.position}</p>
     </div>
   );
 };
