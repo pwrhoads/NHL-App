@@ -1,7 +1,7 @@
 import type { Game } from "../types/view/Game";
 
 interface FinishedProps {
-  game: Game;
+  game?: Game;
 }
 
 const FinishedGame = ({ game }: FinishedProps) => {

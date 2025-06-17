@@ -29,7 +29,6 @@ export async function fetchPlayerGameLogBySeasonAndType({
 }: PlayerGameLogParams): Promise<PlayerGameLog> {
   const res = await fetch(
     `${baseUrl}` +
-      "player/" +
       `${playerID}` +
       "/game-log/" +
       `${season}` +

@@ -26,14 +26,14 @@ export interface SkaterStatLine {
     faceOffPct: number;
     gameWinningGoals: number;
     otGoals: number;
-    gamesPlayed: number;
+    gamesPlayed?: number;
     timeOnIce: string;
     blockedShots: number;
-    goalsPer60: number;
-    assistsPer60: number;
-    pointsPer60: number;
-    shotsPer60: number;
-    blockPer60: number;
+    goalsPer60?: number;
+    assistsPer60?: number;
+    pointsPer60?: number;
+    shotsPer60?: number;
+    blockPer60?: number;
 }
 //Core stats for a given season
 export interface SkaterSeasonStats {
@@ -65,7 +65,6 @@ export interface SkaterOpposingGoalieStats {
 //Stats in the last 5/10 games
 export interface SkaterRecentGameStats {
     last5Games: SkaterStatLine;
-    last10Games: SkaterStatLine
 }
 //Full stats for a given season
 export interface SkaterSeasonData {
@@ -75,7 +74,6 @@ export interface SkaterSeasonData {
     totalStats: SkaterSeasonStats;
     vsTeam:  SkaterOpposingTeamStats[];
     vsGoalie: SkaterOpposingGoalieStats[];
-    recentGames: SkaterRecentGameStats;
 }
 
 export interface CareerStats {
@@ -86,5 +84,6 @@ export interface CareerStats {
 //Full player record across all seasons
 export interface SkaterStats extends SkaterInfo {
     seasons: SkaterSeasonData[];
+    recentGames: SkaterRecentGameStats;
     careerStats: CareerStats;
 }

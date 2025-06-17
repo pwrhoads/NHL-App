@@ -1,6 +1,6 @@
-import type { CareerStats, SkaterStatLine, SkaterStats } from "../../types/view/SkaterStats";
+import type { CareerStats, SkaterOpposingGoalieStats, SkaterOpposingTeamStats, SkaterRecentGameStats, SkaterSeasonData, SkaterSeasonStats, SkaterStatLine, SkaterStats } from "../../types/view/SkaterStats";
 
-function createEmptySkaterStatLine(): SkaterStatLine {
+export function createEmptySkaterStatLine(): SkaterStatLine {
   return {
     goals: 0,
     assists: 0,
@@ -35,6 +35,12 @@ function createEmptyCareerStats(): CareerStats {
     };
 }
 
+function createEmptyRecentGameStats(): SkaterRecentGameStats {
+    return {
+        last5Games: createEmptySkaterStatLine(),
+    }
+}
+
 export function createEmptySkaterStats(): SkaterStats {
     return {
         id: '',
@@ -47,6 +53,49 @@ export function createEmptySkaterStats(): SkaterStats {
         mugshotUrl: '',
         position: '',
         seasons: [],
+        recentGames: createEmptyRecentGameStats(),
         careerStats: createEmptyCareerStats()
     };
+}
+
+function createEmptySkaterSeasonStats(): SkaterSeasonStats {
+  return {
+    season: '',
+    total: createEmptySkaterStatLine(),
+    byPeriod: {
+      first: createEmptySkaterStatLine(),
+      second: createEmptySkaterStatLine(),
+      third: createEmptySkaterStatLine(),
+      overtime: createEmptySkaterStatLine(),
+    },
+  };
+}
+
+function createEmptySkaterOpposingTeamStats(): SkaterOpposingTeamStats {
+  return {
+    teamAbbrev: '',
+    teamName: '',
+    season: '',
+    stats: createEmptySkaterStatLine(),
+  };
+}
+
+function createEmptySkaterOpposingGoalieStats(): SkaterOpposingGoalieStats {
+  return {
+    goalieID: '',
+    goalieName: '',
+    season: '',
+    stats: createEmptySkaterStatLine(),
+  };
+}
+
+export function createEmptySkaterSeasonData(): SkaterSeasonData {
+  return {
+    season: '',
+    teamAbbrev: '',
+    teamName: '',
+    totalStats: createEmptySkaterSeasonStats(),
+    vsTeam: [],
+    vsGoalie: [],
+  };
 }

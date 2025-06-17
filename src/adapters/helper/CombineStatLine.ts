@@ -2,8 +2,8 @@ import type { SkaterStatLine } from "../../types/view/SkaterStats";
 import { calculateCareerShootingPct, calculateCareerToiAvg, calculateValuePer60 } from "../../utils/helpers/SkaterStatHelpers";
 
 export function combineStatLines(a: SkaterStatLine, b: SkaterStatLine): SkaterStatLine {
-    const combinedGames = a.gamesPlayed + b.gamesPlayed;
-    const combinedTime = calculateCareerToiAvg(a.timeOnIce, b.timeOnIce, a.gamesPlayed, b.gamesPlayed)
+    const combinedGames = a.gamesPlayed! + b.gamesPlayed!;
+    const combinedTime = calculateCareerToiAvg(a.timeOnIce, b.timeOnIce, a.gamesPlayed!, b.gamesPlayed!)
     const combinedGoals = a.goals + b.goals;
     const combinedAssists = a.assists + b.assists;
     const combinedPoints = a.points + b.points;

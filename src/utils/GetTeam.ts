@@ -12,10 +12,10 @@ export function getTeamStyle(teamAbbrev: string): TeamStyle {
   const colors = teamColors[teamAbbrev] || {};
 
   return {
-    primary: colors["1"],
-    secondary: colors["2"],
-    tertiary: colors["3"],
-    quaternary: colors["4"],
+    primary: colors["1"] || "#000000",
+    secondary: colors["2"] || "#000000",
+    tertiary: colors["3"] || "#000000",
+    quaternary: colors["4"] || "#000000",
   };
 }
 

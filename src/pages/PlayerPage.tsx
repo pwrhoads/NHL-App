@@ -5,8 +5,6 @@ const PlayerPage = () => {
   const { id } = useParams<{ id?: string }>();
   const { data, loading, error } = useSkaterStats(id ?? "");
 
-  console.log(id);
-
   if (!id) {
     return <div>Invalid player ID</div>;
   }
@@ -21,6 +19,7 @@ const PlayerPage = () => {
       <p>Goals: {data.careerStats.combined.goals}</p>
       <p>{data.careerStats.combined.timeOnIce}</p>
       <p>{data.position}</p>
+      <p>{data.recentGames.last5Games.assists}</p>
     </div>
   );
 };
