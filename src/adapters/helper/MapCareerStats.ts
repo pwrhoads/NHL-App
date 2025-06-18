@@ -5,7 +5,7 @@ import type {
 import type { SkaterStatLine } from "../../types/view/SkaterStats";
 import { calculateValuePer60 } from "../../utils/helpers/SkaterStatHelpers";
 
-export function mapCareerStatSourceToStatLine(
+export function mapToCareerStatLine(
   source: RegularSeasonOrPlayoffs1
 ): SkaterStatLine {
   return {
@@ -64,7 +64,7 @@ export function mapLast5GamesSourceToStatLine(
       acc.pim += game.pim ?? 0;
       acc.plusMinus += game.plusMinus ?? 0;
       acc.shotsOnGoal += game.shots ?? 0;
-      acc.shortHandedGoals += game.shorthandedGoals ?? 0;
+    //   acc.shortHandedGoals += game.shorthandedGoals ?? 0;
     //   acc.shortHandedPoints ?? 0;
     //   acc.shootingPct ?? 0;
     //   acc.faceOffPct ?? 0;
@@ -89,7 +89,7 @@ export function mapLast5GamesSourceToStatLine(
       faceOffPct: 0,
       gameWinningGoals: 0,
       otGoals: 0,
-      timeOnIce: "",
+      timeOnIce: "00:00",
       blockedShots: 0,
     }
   );

@@ -1,4 +1,10 @@
+import { StatTypeKeys } from "../../enums/StatTypeKey";
+import type {
+  PlayerGameLog,
+} from "../../types/api/PlayerGameLogApi";
 import type { SeasonTotalsEntity } from "../../types/api/PlayerLandingApi";
+import type { CombinedGameLogs } from "../../types/helper/CombinedGameLogs";
+import { getStatFromPlayByPlay } from "../loaders/PlayByPlayLoader";
 
 export function calculateCareerToiAvg(
   toi1: string,
@@ -58,12 +64,78 @@ export function calculateValuePer60(
   return value / secondsPlayed;
 }
 
-export function getPlayerNHLSeasons(seasonTotals: SeasonTotalsEntity[]): number[] {
+export function getPlayerNHLSeasons(
+  seasonTotals: SeasonTotalsEntity[]
+): number[] {
   const nhlSeasons = seasonTotals
     .filter((season) => season.leagueAbbrev === "NHL")
     .map((season) => season.season);
 
-    const uniqueSortedSeasons = Array.from(new Set(nhlSeasons)).sort((a, b) => a - b);
+  const uniqueSortedSeasons = Array.from(new Set(nhlSeasons)).sort(
+    (a, b) => a - b
+  );
 
   return uniqueSortedSeasons;
+}
+
+export async function getFaceOffPctFromGameLog(
+  logs: PlayerGameLog[],
+  playerId: number
+): Promise<number> {
+  let totalFaceOffs = 0;
+  let totalWins = 0;
+  for (const log of logs) {
+    if (!log.gameLog) continue;
+    for (const game of log.gameLog) {
+      const { total, wins } = await getStatFromPlayByPlay(
+        game.gameId,
+        StatTypeKeys.Faceoff,
+        playerId
+      );
+      totalFaceOffs += total;
+      totalWins += wins ?? 0;
+    }
+  }
+  if (totalFaceOffs === 0) return 0;
+  const faceoffPct = totalWins / totalFaceOffs;
+  return faceoffPct;
+}
+
+async function getBlocksFromGameLog(
+  logs: PlayerGameLog[],
+  playerId: number
+): Promise<number> {
+  let totalGames = 0;
+  let totalBlocks = 0;
+  for (const log of logs) {
+    if (!log.gameLog) continue;
+    for (const game of log.gameLog) {
+      totalGames++;
+      const { total } = await getStatFromPlayByPlay(
+        game.gameId,
+        StatTypeKeys.BlockedShot,
+        playerId
+      );
+      totalBlocks += total;
+    }
+  }
+  console.log(`Processed ${totalGames} games for player ${playerId}`)
+  return totalBlocks;
+}
+
+export async function getBlocksForAllGameLogs(
+  combinedGameLogs: CombinedGameLogs,
+  playerId: number
+): Promise<Record<string, number>> {
+
+  const blocksPromises = Object.entries(combinedGameLogs).map(
+    async ([key, logs]) => {
+      const blocks = await getBlocksFromGameLog(logs, playerId);
+      return [key, blocks] as const;
+    }
+  );
+
+  const blocksResults = await Promise.all(blocksPromises);
+
+  return Object.fromEntries(blocksResults)
 }

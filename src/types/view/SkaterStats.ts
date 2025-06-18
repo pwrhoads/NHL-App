@@ -38,9 +38,9 @@ export interface SkaterStatLine {
 //Core stats for a given season
 export interface SkaterSeasonStats {
     season: string; //e.g. '20242025'
-    total: SkaterStatLine; //G, A, P, SOG, Block, SHG, and PIM for a given season
+    total: SkaterStatLine; //G, A, P, SOG, Block, SHG, PIM, etc for a given season
 
-    byPeriod: { //G, A, P, SOG per period for a given season
+    byPeriod: { //G, A, P, SOG, Block, SHG, PIM, etc per period for a given season
         first: SkaterStatLine;
         second: SkaterStatLine;
         third: SkaterStatLine;
@@ -71,6 +71,8 @@ export interface SkaterSeasonData {
     season: string;
     teamAbbrev: string;
     teamName: string;
+    regSeason: SkaterSeasonStats;
+    playOffs: SkaterSeasonStats;
     totalStats: SkaterSeasonStats;
     vsTeam:  SkaterOpposingTeamStats[];
     vsGoalie: SkaterOpposingGoalieStats[];

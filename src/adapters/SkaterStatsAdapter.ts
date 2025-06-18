@@ -1,19 +1,28 @@
-import type {  PlayerGameLog } from "../types/api/PlayerGameLogApi";
+import type { PlayerGameLog } from "../types/api/PlayerGameLogApi";
 import type { PlayerLanding } from "../types/api/PlayerLandingApi";
-import type {  SkaterStats } from "../types/view/SkaterStats";
-import { createEmptySkaterStatLine, createEmptySkaterStats } from "../utils/factories/SkaterFactory";
+import type { SkaterStats } from "../types/view/SkaterStats";
+import { createEmptySkaterStats } from "../utils/factories/SkaterFactory";
 import { combineStatLines } from "./helper/CombineStatLine";
-import { mapGameLogToStatLine } from "./helper/MapGameLog";
 import {
-  mapCareerStatSourceToStatLine,
+  mapToCareerStatLine,
   mapLast5GamesSourceToStatLine,
-} from "./helper/MapSource";
+} from "./helper/MapCareerStats";
+import { mapGameLogsToSeasonStats } from "./helper/MapSeasonStats";
 
-export async function adaptToSkaterStats(
-  playerLanding: PlayerLanding, gameLog: PlayerGameLog[]
-): Promise<SkaterStats> {
+interface CombinedGameLogs {
+  career: PlayerGameLog[];
+  regularSeason: PlayerGameLog[];
+  playoffs: PlayerGameLog[];
+  last5: PlayerGameLog[];
+}
+
+export function adaptToSkaterStats(
+  playerLanding: PlayerLanding,
+  gameLogs: CombinedGameLogs
+): SkaterStats {
   const skaterStats = createEmptySkaterStats();
 
+  console.log(playerLanding.careerTotals);
   //SkaterInfo
   Object.assign(skaterStats, {
     id: playerLanding.playerId.toString(),
@@ -26,13 +35,15 @@ export async function adaptToSkaterStats(
     position: playerLanding.position,
   });
   //Regular Season Career Stats
-  skaterStats.careerStats.regSeason = mapCareerStatSourceToStatLine(
+  skaterStats.careerStats.regSeason = mapToCareerStatLine(
     playerLanding.careerTotals.regularSeason
   );
   //Playoff Career Stats
-  skaterStats.careerStats.playOffs = mapCareerStatSourceToStatLine(
-    playerLanding.careerTotals.playoffs
-  );
+  if (playerLanding.careerTotals?.playoffs) {
+    skaterStats.careerStats.playOffs = mapToCareerStatLine(
+      playerLanding.careerTotals.playoffs
+    );
+  }
   //Regular Season + Playoff Career Stats
   skaterStats.careerStats.combined = combineStatLines(
     skaterStats.careerStats.regSeason,
@@ -45,32 +56,8 @@ export async function adaptToSkaterStats(
     );
   }
   //Season Stats
-  for (const seasonLog of gameLog) {
-    const games = seasonLog.gameLog ?? [];
-    if (games.length === 0) continue;
+  skaterStats.seasons = mapGameLogsToSeasonStats(gameLogs.career);
 
-    const total = mapGameLogToStatLine(games);
-
-    const firstGame = games.find(g => g.teamAbbrev);
-
-    skaterStats.seasons.push({
-        season: seasonLog.seasonId.toString(),
-        teamAbbrev: firstGame?.teamAbbrev ?? '',
-        teamName: firstGame?.commonName.default ?? '',
-        totalStats: {
-            season: seasonLog.seasonId.toString(),
-            total,
-            byPeriod: {
-                first: createEmptySkaterStatLine(),
-                second: createEmptySkaterStatLine(),
-                third: createEmptySkaterStatLine(),
-                overtime: createEmptySkaterStatLine(),
-            },
-        },
-        vsTeam: [],
-        vsGoalie: [],
-    });
-  }
-  console.log(skaterStats)
+  console.log(skaterStats);
   return skaterStats;
 }

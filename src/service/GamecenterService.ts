@@ -4,7 +4,7 @@ const baseUrl: string = "/api/gamecenter/";
 const error: string = "Failed to fetch club stats";
 
 export interface GamecenterProps {
-  gameId: string;
+  gameId: number;
 }
 
 export async function fetchGamecenterPlayByPlay({gameId}:GamecenterProps): Promise<Gamecenter> {
